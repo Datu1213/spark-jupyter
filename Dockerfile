@@ -50,6 +50,8 @@ ENV JUPYTER_ENABLE_LAB=yes
 ENV HOME=/home/jovyan
 
 # Set Spark configuration directory
+# Use the same volume with spark-master and spark-workers
+# in docker-compose.yaml
 ENV SPARK_CONF_DIR=/home/jovyan/spark-conf
 
 # EXpose Jupyter Notebook port

@@ -6,7 +6,8 @@ Java Env, pyspark, pyhton, numpy, pandas are ready to use.
 ghcr.io/datu1213/spark-jupyter:python3.13-java17-pyspark3.5.7
 ```
 # Reminder
-Use path like `/opt/spark/data/xxxxx`, cause Jupyter Server is just a server tool, real manipulations run on Spark Workers.
+- Use path like `/opt/spark/data/xxxxx`, cause Jupyter Server is just a server tool, real manipulations run on Spark Workers.
+- Use `user: "${UID}:${GID}"` in `docker-compose.yml` to avoid permission problem.
 # Environment variables
 ## environment variables
 ### Customizable environment variables

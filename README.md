@@ -38,6 +38,7 @@ spark-jupyter:
     - spark-worker
   ports:
     - "8888:8888" # Jupyter Notebook UI
+  user: "${UID}:${GID}"
   volumes:
   # Best practices: Share the data, every things shows in your Jupyter notebook.
   # Use read-only mode if needed.

@@ -51,9 +51,7 @@ jobs:
         with:
           context: .
           push: true
-          # 只推送你指定的长名字 tag
           tags: ghcr.io/datu1213/spark-jupyter:python3.13-java17-pyspark3.5.7
-          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}

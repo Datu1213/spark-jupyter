@@ -18,8 +18,12 @@ RUN apt-get update && \
     # --------  Important  ------------
     # Use headless JDK to avoid ument depandencies exceptions
     # --------  Important  ------------
-    apt-get install -y --no-install-recommends openjdk-${JAVA_VERSION}-jdk-headless && \
+    apt-get install -y --no-install-recommends openjdk-${JAVA_VERSION}-jdk-headless \
+    pkg-config python3-dev liblapack-dev libopenblas-dev build-essential gcc g++ gfortran && \
+    pip install --upgrade pip setuptools wheel && \
     pip install --no-cache-dir pyspark==${SPARK_VERSION} pandas numpy matplotlib && \
+    pip install --no-cache-dir great-expectations scikit-learn && \
+    pip install gunicorn alembic sqlalchemy flask psycopg2-binary boto3 mlflow && \
     # --------------------
     # If you need additional system libraries, add them here
     # Example: apt-get install -y --no-install-recommends openjdk-${JAVA_VERSION}-jdk-headless vim curl && \

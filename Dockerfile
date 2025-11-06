@@ -1,9 +1,9 @@
-FROM quay.io/jupyter/minimal-notebook:python-3.13
+FROM quay.io/jupyter/minimal-notebook:python-3.11
 
 # Labels for metadata
 LABEL maintainer="zhenkuiwang1213@gmail.com"
 LABEL description="Jupyter Notebook with PySpark"
-LABEL version="1.0.0"
+LABEL version="1.1.0"
 
 # ---
 # Define version of Java and Spark
@@ -23,7 +23,8 @@ RUN apt-get update && \
     pip install --upgrade pip setuptools wheel && \
     pip install --no-cache-dir pyspark==${SPARK_VERSION} pandas numpy matplotlib && \
     pip install --no-cache-dir great-expectations scikit-learn && \
-    pip install gunicorn alembic sqlalchemy flask psycopg2-binary boto3 mlflow && \
+    pip install --no-cache-dir gunicorn alembic sqlalchemy flask psycopg2-binary boto3 mlflow && \
+    pip install --no-cache-dir ray[air]==2.49.2 ipywidgets && \
     # --------------------
     # If you need additional system libraries, add them here
     # Example: apt-get install -y --no-install-recommends openjdk-${JAVA_VERSION}-jdk-headless vim curl && \

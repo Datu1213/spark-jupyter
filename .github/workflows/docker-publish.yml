@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: datu1213/spark-jupyter
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
@@ -51,11 +51,11 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/datu1213/spark-jupyter:python3.13-java17-pyspark3.5.7
+          tags: ghcr.io/datu1213/spark-jupyter:python3.11-java17-pyspark3.5.7
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:
-          TAGS: ghcr.io/datu1213/spark-jupyter:python3.13-java17-pyspark3.5.7
+          TAGS: ghcr.io/datu1213/spark-jupyter:python3.11-java17-pyspark3.5.7
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
